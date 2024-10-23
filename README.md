@@ -4,12 +4,12 @@
 [![Minzip Package][bundlePhobiaBadge]][bundlePhobiaUrl]
 [![NPM Download][npmDtBadge]][npmDtUrl]
 
-[npmBadge]: https://img.shields.io/npm/v/@nuxtbase/auth-ui-vue.svg?maxAge=2592000
-[npmUrl]: https://www.npmjs.com/package/@nuxtbase/auth-ui-vue
-[npmDtBadge]: https://img.shields.io/npm/dt/@nuxtbase/auth-ui-vue.svg
-[npmDtUrl]: https://www.npmjs.com/package/@nuxtbase/auth-ui-vue
-[bundlePhobiaBadge]: https://img.shields.io/bundlephobia/minzip/@nuxtbase/auth-ui-vue
-[bundlePhobiaUrl]: https://bundlephobia.com/package/@nuxtbase/auth-ui-vue@latest
+[npmBadge]: https://img.shields.io/npm/v/@supa-kit/auth-ui-vue.svg?maxAge=2592000
+[npmUrl]: https://www.npmjs.com/package/@supa-kit/auth-ui-vue
+[npmDtBadge]: https://img.shields.io/npm/dt/@supa-kit/auth-ui-vue.svg
+[npmDtUrl]: https://www.npmjs.com/package/@supa-kit/auth-ui-vue
+[bundlePhobiaBadge]: https://img.shields.io/bundlephobia/minzip/@supa-kit/auth-ui-vue
+[bundlePhobiaUrl]: https://bundlephobia.com/package/@supa-kit/auth-ui-vue@latest
 
 > Pre-built auth widgets to get started in minutes.
 
@@ -58,9 +58,9 @@ Customizable authentication UI component with custom themes and extensible style
 To start using the library in Vue 3, install these in your project:
 
 ```bash
-pnpm install @supabase/supabase-js @supabase/auth-ui-shared @nuxtbase/auth-ui-vue -D
+pnpm install @supabase/supabase-js @supabase/auth-ui-shared @supa-kit/auth-ui-vue -D
 or
-yarn add @supabase/supabase-js @supabase/auth-ui-shared @nuxtbase/auth-ui-vue -D
+yarn add @supabase/supabase-js @supabase/auth-ui-shared @supa-kit/auth-ui-vue -D
 ```
 
 ```html
@@ -81,7 +81,7 @@ yarn add @supabase/supabase-js @supabase/auth-ui-shared @nuxtbase/auth-ui-vue -D
   import { ThemeSupa } from '@supabase/auth-ui-shared'
   import { createClient } from '@supabase/supabase-js'
 
-  import { Auth } from '@nuxtbase/auth-ui-vue'
+  import { Auth } from '@supa-kit/auth-ui-vue'
 
   const supabaseClient = createClient(
     '<INSERT PROJECT URL>',
@@ -101,9 +101,9 @@ Here's a example work with `@nuxtjs/supabase`:
 First install these in your project:
 
 ```bash
-pnpm install @nuxtjs/supabase @supabase/auth-ui-shared @nuxtbase/auth-ui-vue -D
+pnpm install @nuxtjs/supabase @supabase/auth-ui-shared @supa-kit/auth-ui-vue -D
 or
-yarn add @nuxtjs/supabase @supabase/auth-ui-shared @nuxtbase/auth-ui-vue -D
+yarn add @nuxtjs/supabase @supabase/auth-ui-shared @supa-kit/auth-ui-vue -D
 ```
 
 Add `@nuxtjs/supabase` to the modules section of `nuxt.config.ts`:
@@ -140,7 +140,7 @@ Now, you can access the [supabase client](https://supabase.com/docs/reference/ja
 <script setup lang="ts">
   // Import predefined theme
   import { ThemeSupa } from '@supabase/auth-ui-shared'
-  import { Auth } from '@nuxtbase/auth-ui-vue'
+  import { Auth } from '@supa-kit/auth-ui-vue'
 
   const supabaseClient = useSupabaseClient()
 </script>
@@ -171,7 +171,7 @@ The Auth component also supports login with [official social providers](https://
   import { ThemeSupa } from '@supabase/auth-ui-shared'
   import { createClient } from '@supabase/supabase-js'
 
-  import { Auth } from '@nuxtbase/auth-ui-vue'
+  import { Auth } from '@supa-kit/auth-ui-vue'
 
   const supabaseClient = createClient(
     '<INSERT PROJECT URL>',
@@ -282,7 +282,7 @@ Auth UI comes with several themes to customize the appearance. Each predefined t
   import { ThemeSupa } from '@supabase/auth-ui-shared'
   import { createClient } from '@supabase/supabase-js'
 
-  import { Auth } from '@nuxtbase/auth-ui-vue'
+  import { Auth } from '@supa-kit/auth-ui-vue'
 
   const supabaseClient = createClient(
     '<INSERT PROJECT URL>',
@@ -317,7 +317,7 @@ Auth UI comes with two theme variations: `default` and `dark`. You can switch be
   import { ThemeSupa } from '@supabase/auth-ui-shared'
   import { createClient } from '@supabase/supabase-js'
 
-  import { Auth } from '@nuxtbase/auth-ui-vue'
+  import { Auth } from '@supa-kit/auth-ui-vue'
 
   const supabaseClient = createClient(
     '<INSERT PROJECT URL>',
@@ -358,7 +358,7 @@ Auth UI themes can be overridden using variable tokens. See the [list of variabl
   import { ThemeSupa } from '@supabase/auth-ui-shared'
   import { createClient } from '@supabase/supabase-js'
 
-  import { Auth } from '@nuxtbase/auth-ui-vue'
+  import { Auth } from '@supa-kit/auth-ui-vue'
 
   const supabaseClient = createClient(
     '<INSERT PROJECT URL>',
@@ -390,7 +390,7 @@ See the list of [tokens within a theme](https://github.com/supabase/auth-ui/blob
 
 <script setup lang="ts">
   import { createClient } from '@supabase/supabase-js'
-  import { Auth } from '@nuxtbase/auth-ui-vue'
+  import { Auth } from '@supa-kit/auth-ui-vue'
 
   const customTheme = {
     default: {
@@ -455,7 +455,7 @@ You can use custom CSS classes for the following elements:
 
 <script setup lang="ts">
   import { createClient } from '@supabase/supabase-js'
-  import { Auth } from '@nuxtbase/auth-ui-vue'
+  import { Auth } from '@supa-kit/auth-ui-vue'
 
   const supabaseClient = createClient(
     '<INSERT PROJECT URL>',
@@ -488,7 +488,7 @@ You can use custom CSS inline styles for the following elements:
 
 <script setup lang="ts">
   import { createClient } from '@supabase/supabase-js'
-  import { Auth } from '@nuxtbase/auth-ui-vue'
+  import { Auth } from '@supa-kit/auth-ui-vue'
 
   const supabaseClient = createClient(
     '<INSERT PROJECT URL>',
@@ -521,7 +521,7 @@ You can use custom labels with localization.variables. See the [list of labels](
 
 <script setup lang="ts">
   import { createClient } from '@supabase/supabase-js'
-  import { Auth } from '@nuxtbase/auth-ui-vue'
+  import { Auth } from '@supa-kit/auth-ui-vue'
 
   const supabaseClient = createClient(
     '<INSERT PROJECT URL>',
@@ -548,7 +548,7 @@ This will be useful when the sub-components need to access the `user` data at an
 
 <script setup lang="ts">
   import { createClient } from '@supabase/supabase-js'
-  import { UserContextProvider } from '@nuxtbase/auth-ui-vue'
+  import { UserContextProvider } from '@supa-kit/auth-ui-vue'
 
   import Profile from '@/components/Profile.vue'
 
@@ -571,7 +571,7 @@ This will be useful when the sub-components need to access the `user` data at an
     injectStrict,
     UserContextProviderInjection,
     UserContextProviderKey
-  } from '@nuxtbase/auth-ui-vue'
+  } from '@supa-kit/auth-ui-vue'
 
   const { user } = injectStrict<UserContextProviderInjection>(
     UserContextProviderKey

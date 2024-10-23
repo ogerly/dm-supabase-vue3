@@ -20,7 +20,7 @@
             </div>
             <a
               class="cursor-pointer hover:bg-neutral-200 hover:dark:bg-neutral-700 p-2 rounded-md"
-              href="https://github.com/nuxtbase/auth-ui-vue"
+              href="https://github.com/supa-kit/auth-ui-vue"
               target="_blank"
             >
               <ri:github-fill class="w-5 h-5" />
