@@ -6,7 +6,7 @@
     strokeWidth="2"
     stroke="currentColor"
     ariaHidden="true"
-    class="text-slate-200 dark:text-slate-500 w-6"
+    class="w-6"
   >
     <path
       strokeLinecap="round"

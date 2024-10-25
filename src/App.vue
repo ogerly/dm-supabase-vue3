@@ -135,7 +135,9 @@
 
                 <!-- Rounded corners -->
                 <div class="flex flex-col gap-6">
-                  <div class="text-secondary text-base">Rounded corners</div>
+                  <div class="text-secondary-foreground text-base">
+                    Rounded corners
+                  </div>
                   <div class="flex items-center gap-3">
                     <ToggleButton
                       v-model:selected="borderRadius"
@@ -157,7 +159,9 @@
 
                 <!-- Social Auth Layout -->
                 <div class="flex flex-col gap-6">
-                  <div class="text-secondary text-base">Social Auth Layout</div>
+                  <div class="text-secondary-foreground text-base">
+                    Social Auth Layout
+                  </div>
                   <div class="flex items-center gap-3">
                     <ToggleButton
                       v-model:selected="socialLayout"
