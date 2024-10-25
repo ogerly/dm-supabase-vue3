@@ -140,17 +140,17 @@
                     <ToggleButton
                       v-model:selected="borderRadius"
                       :defaultValue="radii[0]"
-                      class="rounded-xl border-b-0 border-l-0 !bg-neutral-100 !dark:bg-neutral-800"
+                      class="rounded-xl border-b-0 border-l-0 bg-neutral-100 dark:bg-neutral-800"
                     />
                     <ToggleButton
                       v-model:selected="borderRadius"
                       :defaultValue="radii[1]"
-                      class="rounded-xl border-b-0 border-l-0 !bg-neutral-100 !dark:bg-neutral-800"
+                      class="rounded-xl border-b-0 border-l-0 bg-neutral-100 dark:bg-neutral-800"
                     />
                     <ToggleButton
                       v-model:selected="borderRadius"
                       :defaultValue="radii[2]"
-                      class="rounded-2xl border-b-0 border-l-0 !bg-neutral-100 !dark:bg-neutral-800"
+                      class="rounded-2xl border-b-0 border-l-0 bg-neutral-100 dark:bg-neutral-800"
                     />
                   </div>
                 </div>
@@ -162,20 +162,20 @@
                     <ToggleButton
                       v-model:selected="socialLayout"
                       :defaultValue="socialAlignments[0]"
-                      class="flex items-center justify-center !border-neutral-300/66 !dark:border-neutral-800/66 !bg-neutral-100 !dark:bg-neutral-800"
+                      class="flex items-center justify-center border-neutral-300/66 dark:border-neutral-800/66 bg-neutral-100 dark:bg-neutral-800"
                     >
                       <IconMenu
-                        class="!text-neutral-500 !dark:text-neutral-200 w-6 rotate-90"
+                        class="text-neutral-500 dark:text-neutral-200 w-6 rotate-90"
                       />
                     </ToggleButton>
 
                     <ToggleButton
                       v-model:selected="socialLayout"
                       :defaultValue="socialAlignments[1]"
-                      class="flex items-center justify-center !border-neutral-300/66 !dark:border-neutral-800/66 !bg-neutral-100 !dark:bg-neutral-800"
+                      class="flex items-center justify-center border-neutral-300/66 dark:border-neutral-800/66 bg-neutral-100 dark:bg-neutral-800"
                     >
                       <IconMenu
-                        class="!text-neutral-500 !dark:text-neutral-200 w-6"
+                        class="text-neutral-500 dark:text-neutral-200 w-6"
                       />
                     </ToggleButton>
                   </div>

@@ -1,8 +1,8 @@
 <template>
   <button
-    :class="`h-10 w-10 rounded-full border border-2 transition hover:scale-105 ${
+    :class="`h-10 w-10 rounded-full border-[1px] transition hover:scale-105 ${
       selected === defaultValue
-        ? 'ring-neutral-500 dark:ring-neutral-50 ring-2 drop-shadow-lg !border-neutral-300 !dark:border-neutral-700'
+        ? 'ring-neutral-500 dark:ring-neutral-50 ring-2 border-none drop-shadow-lg border-neutral-300 dark:border-neutral-700'
         : ''
     } ${className}`"
     :style="{
