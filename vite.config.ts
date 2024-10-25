@@ -1,8 +1,10 @@
 import { defineConfig, UserConfig } from 'vite'
 import { resolve } from 'path'
 import Vue from '@vitejs/plugin-vue'
+import autoprefixer from 'autoprefixer'
+import tailwind from 'tailwindcss'
+
 import dts from 'vite-plugin-dts'
-import UnoCSS from 'unocss/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
@@ -20,7 +22,6 @@ export default defineConfig(({ command, mode }) => {
   const commonPlugins = [
     Vue(),
     VueDevTools(),
-    UnoCSS(),
     Components({
       resolvers: [
         IconsResolver({
@@ -64,6 +65,11 @@ export default defineConfig(({ command, mode }) => {
   }
 
   return {
+    css: {
+      postcss: {
+        plugins: [tailwind(), autoprefixer()]
+      }
+    },
     resolve: {
       alias: {
         '@': resolve(__dirname, '/packages'),

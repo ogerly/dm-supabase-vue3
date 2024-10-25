@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-3">
     <div className="col-span-12 md:col-span-5 lg:col-span-6">
-      <div className="!max-w-md">
+      <div className="max-w-lg">
         <h3 className="text-primary text-2xl mb-8 flex-between">
           <div>Auth UI Vue</div>
           <div class="flex items-center gap-2">
@@ -27,7 +27,7 @@
             </a>
           </div>
         </h3>
-        <p className="text-secondary !mb-0">
+        <p className="text-secondary-foreground !mb-0">
           Pre-built auth widgets to get started in minutes.
         </p>
         <p className="text-thirdary mt-0">

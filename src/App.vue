@@ -111,13 +111,17 @@
           </UserContextProvider>
 
           <main
-            class="grid grid-cols-1 gap-8 text-xs 2xl:text-sm text-primary pb-20"
+            class="flex justify-between items-center gap-8 w-full max-w-lg text-xs 2xl:text-sm text-primary pb-20"
           >
-            <div class="grid gap-8 py-8 sm:grid-cols-2">
+            <div
+              class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 py-8 w-full"
+            >
               <div class="flex flex-col gap-8">
                 <!-- Brand color -->
                 <div class="flex flex-col gap-6">
-                  <div class="text-secondary text-base">Brand color</div>
+                  <div class="text-secondary-foreground text-base">
+                    Brand color
+                  </div>
                   <div class="flex items-center gap-3">
                     <ToggleButton
                       v-model:selected="brandColor"
@@ -180,21 +184,21 @@
 
               <!-- Component View -->
               <div class="flex flex-col gap-6">
-                <div class="text-secondary text-base">Component View</div>
-                <div class="flex items-center gap-3">
+                <div class="text-secondary-foreground text-base">
+                  Component View
+                </div>
+                <div class="flex items-center justify-end gap-3">
                   <div class="relative flex flex-col gap-2">
-                    <button
+                    <Button
                       v-for="v in views"
                       :key="v.id"
                       :value="v.id"
                       @click.prevent="view = v.id"
-                      class="text-white border-0 py-2 px-6 focus:outline-none rounded text-sm"
-                      :style="{
-                        background: view === v.id ? brandColor : backgroundColor
-                      }"
+                      :variant="view === v.id ? 'brand' : 'default'"
+                      class="focus:outline-none rounded text-sm"
                     >
                       {{ v.title }}
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -220,6 +224,7 @@ import Auth from '@/auth/Auth.vue'
 import { AuthViewType } from '@/types'
 import IconMenu from './components/IconMenu.vue'
 import IconPalette from './components/IconPalette.vue'
+import { Button } from './components/ui/button'
 import UserContextProvider, {
   useSupabaseUser
 } from '@/auth/UserContextProvider'

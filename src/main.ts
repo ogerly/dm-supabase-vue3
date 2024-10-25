@@ -1,9 +1,7 @@
 import { createApp } from 'vue'
 import { createHead } from '@vueuse/head'
 import App from './App.vue'
-
-import 'uno.css'
-import '@unocss/reset/tailwind.css'
+import '~/assets/index.css'
 import highlight from '~/plugins/highlight'
 import i18n from '~/plugins/i18n'
 

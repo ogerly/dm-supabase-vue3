@@ -29,5 +29,9 @@
     "packages/**/*.tsx",
     "packages/**/*.vue"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "baseUrl": ".",
+  "paths": {
+    "@/*": ["./src/*"]
+  }
 }

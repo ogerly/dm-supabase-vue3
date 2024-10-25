@@ -11,7 +11,9 @@
         </a>
         <span> © {{ new Date().getFullYear() }}</span>
       </p>
-      <p class="flex flex-col sm:flex-row items-center space-x-1 space-y-2 sm:space-y-0 mt-2">
+      <div
+        class="flex flex-col sm:flex-row items-center space-x-1 space-y-2 sm:space-y-0 mt-2"
+      >
         <div class="flex items-center space-x-1">
           <carbon:logo-twitter class="text-emerald-500" />
           <span>
@@ -50,7 +52,7 @@
             </a>
           </span>
         </div>
-      </p>
+      </div>
     </div>
   </footer>
 </template>
