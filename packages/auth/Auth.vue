@@ -77,6 +77,8 @@ import { I18nVariables, en, merge } from '@supabase/auth-ui-shared'
 import { createStitches } from '@stitches/core'
 import cloneDeep from 'lodash.clonedeep'
 
+import '../ui/index.css'
+
 import { AuthProps, AuthViewKey, AuthViewType } from '../types'
 import SocialAuthContainer from './SocialAuthContainer.vue'
 import EmailAuth from './EmailAuth.vue'

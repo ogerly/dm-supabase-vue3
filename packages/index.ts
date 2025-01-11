@@ -10,6 +10,7 @@ import {
 import { injectStrict } from './utils'
 import type { UserContextProviderInjection } from './types'
 import { UserContextProviderKey } from './types'
+import './ui/assets/index.css'
 
 export {
   Auth,

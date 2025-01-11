@@ -8,10 +8,10 @@
       >
         <template v-for="provider in providers" :key="provider">
           <Button
-            color="default"
+            variant="outline"
             :loading="isLoading"
-            @click.prevent="() => handleProviderSignIn(provider)"
             :appearance="appearance"
+            @click.prevent="() => handleProviderSignIn(provider)"
           >
             <template #icon>
               <Icons :name="provider" />
@@ -29,8 +29,12 @@
           </Button>
         </template>
       </Container>
+      <Separator
+        label="OR"
+        :appearance="appearance"
+        v-if="!onlyThirdPartyProviders"
+      />
     </Container>
-    <Divider :appearance="appearance" v-if="!onlyThirdPartyProviders" />
   </template>
 </template>
 
@@ -49,7 +53,7 @@ import {
   type AuthViewInjection,
   type AuthI18nVariables
 } from '../types'
-import { Divider, Button, Container } from '@/ui'
+import { Button, Container, Separator } from '@/ui'
 import { Icons } from '@/icons'
 import { injectStrict } from '../utils'
 import { useSupabaseUser } from './UserContextProvider'
@@ -130,6 +134,7 @@ const handleProviderSignIn = async (provider: Provider) => {
 
 function capitalize(word: string) {
   const lower = word.toLowerCase()
+  if (lower === 'github') return 'GitHub'
   return word.charAt(0).toUpperCase() + lower.slice(1)
 }
 </script>

@@ -16,10 +16,10 @@
             class="rounded-2xl lg:min-w-md 2xl:min-w-md"
           >
             <div
-              class="border-neutral-400 bg-neutral-50 dark:bg-neutral-800 relative rounded-xl px-8 py-12 drop-shadow-sm"
+              class="border-neutral-400 bg-background relative rounded-xl px-8 py-12 drop-shadow-sm"
               v-if="!isLogged"
             >
-              <div class="mb-6 flex flex-col gap-6">
+              <div class="flex flex-col gap-6">
                 <div class="flex items-center gap-3">
                   <div
                     class="w-10 rounded-full p-2"
@@ -30,7 +30,7 @@
                   >
                     <IconPalette />
                   </div>
-                  <h1 class="text-primary text-2xl">Acme Industries</h1>
+                  <h1 class="text-foreground text-2xl">Acme Industries</h1>
                 </div>
                 <p class="text-neutral-400 text-auth-widget-test">
                   Sign in today for Supa stuff
@@ -41,8 +41,7 @@
                   theme: ThemeSupa,
                   style: {
                     button: {
-                      borderRadius: borderRadius,
-                      borderColor: 'rgba(0,0,0,0.1)'
+                      borderRadius: borderRadius
                     },
                     input: {
                       borderRadius: borderRadius
@@ -59,7 +58,7 @@
                 }"
                 :supabaseClient="supabaseClient"
                 v-model:view="view"
-                :providers="['github', 'google', 'twitter']"
+                :providers="['google', 'github']"
                 :socialLayout="socialLayout"
                 :theme="theme"
                 :dark="isDark"
@@ -74,7 +73,7 @@
               class="border-neutral-400 bg-neutral-50 dark:bg-neutral-800 relative rounded-xl px-8 py-12 drop-shadow-sm"
               v-else
             >
-              <div class="mb-6 flex flex-col gap-6">
+              <div class="flex flex-col gap-6">
                 <div class="flex items-center gap-3">
                   <div
                     class="w-10 rounded-full p-2"
@@ -85,20 +84,14 @@
                   >
                     <IconPalette />
                   </div>
-                  <h1 class="text-primary text-2xl">Welcome back</h1>
+                  <h1 class="text-foreground text-2xl">Welcome back</h1>
                 </div>
                 <p class="text-neutral-400 text-auth-widget-test">
                   {{ isAnonymous ? supabaseUser?.id : supabaseUser?.email }}
                 </p>
-                <button
-                  @click.prevent="handleSignOut"
-                  class="text-white border-0 py-2 px-6 focus:outline-none rounded text-sm"
-                  :style="{
-                    background: brandColor
-                  }"
-                >
+                <Button variant="brand" @click.prevent="handleSignOut">
                   Sign Out
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -111,7 +104,7 @@
           </UserContextProvider>
 
           <main
-            class="flex justify-between items-center gap-8 w-full max-w-lg text-xs 2xl:text-sm text-primary pb-20"
+            class="flex justify-between items-center gap-8 w-full max-w-lg text-xs 2xl:text-sm text-foreground pb-20"
           >
             <div
               class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 py-8 w-full"
@@ -198,7 +191,7 @@
                       :key="v.id"
                       :value="v.id"
                       @click.prevent="view = v.id"
-                      :variant="view === v.id ? 'brand' : 'default'"
+                      :variant="view === v.id ? 'default' : 'outline'"
                       class="focus:outline-none rounded text-sm"
                     >
                       {{ v.title }}
@@ -228,7 +221,7 @@ import Auth from '@/auth/Auth.vue'
 import { AuthViewType } from '@/types'
 import IconMenu from './components/IconMenu.vue'
 import IconPalette from './components/IconPalette.vue'
-import { Button } from './components/ui/button'
+import { Button } from '~/components/ui/Button'
 import UserContextProvider, {
   useSupabaseUser
 } from '@/auth/UserContextProvider'

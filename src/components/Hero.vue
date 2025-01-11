@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-3">
     <div className="col-span-12 md:col-span-5 lg:col-span-6">
       <div className="max-w-lg">
-        <h3 className="text-primary text-2xl mb-8 flex-between">
+        <h3 className="text-foreground text-2xl mb-8 flex-between">
           <div>Auth UI Vue</div>
           <div class="flex items-center gap-2">
             <div
@@ -30,11 +30,13 @@
         <p className="text-secondary-foreground !mb-0">
           Pre-built auth widgets to get started in minutes.
         </p>
-        <p className="text-thirdary mt-0">
+        <p className="text-neutral-500 dark:text-neutral-400 mt-0">
           Customizable authentication UI component with custom themes and
           extensible styles to match your brand and aesthetic
         </p>
-        <div className="text-thirdary mb-4 pt-6 flex items-center space-x-2">
+        <div
+          className="text-neutral-500 dark:text-neutral-400 mb-4 pt-6 flex items-center space-x-2"
+        >
           <small class="flex items-center">
             Ready for &nbsp; <logos:vue /> &nbsp;Vue 3 &nbsp;/&nbsp;
             <logos:nuxt-icon />&nbsp;Nuxt 3

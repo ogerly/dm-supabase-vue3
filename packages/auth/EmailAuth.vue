@@ -43,7 +43,7 @@
 
       <Button
         type="submit"
-        color="primary"
+        variant="brand"
         :loading="isLoading"
         :appearance="appearance"
       >

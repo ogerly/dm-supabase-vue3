@@ -1,7 +1,7 @@
-import type { Config } from 'tailwindcss'
-import animate from 'tailwindcss-animate'
+const animate = require('tailwindcss-animate')
 
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: ['class'],
   safelist: ['dark'],
   prefix: '',
@@ -55,6 +55,10 @@ const config: Config = {
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
+        },
+        brand: {
+          DEFAULT: 'var(--colors-brand)',
+          foreground: '#fff'
         }
       },
       borderRadius: {
@@ -65,20 +69,20 @@ const config: Config = {
       },
       keyframes: {
         'accordion-down': {
-          from: { height: '0' },
+          from: { height: 0 },
           to: { height: 'var(--radix-accordion-content-height)' }
         },
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' }
+          to: { height: 0 }
         },
         'collapsible-down': {
-          from: { height: '0' },
+          from: { height: 0 },
           to: { height: 'var(--radix-collapsible-content-height)' }
         },
         'collapsible-up': {
           from: { height: 'var(--radix-collapsible-content-height)' },
-          to: { height: '0' }
+          to: { height: 0 }
         }
       },
       animation: {
@@ -91,5 +95,3 @@ const config: Config = {
   },
   plugins: [animate]
 }
-
-export default config

@@ -1,10 +1,10 @@
 <template>
   <footer
-    class="mt-16 pb-4 w-full flex-center text-primary"
+    class="mt-16 pb-4 w-full flex-center text-foreground"
     text="slate-50 dark:slate-300 opacity-60 sm"
   >
     <div class="copyright flex flex-col justify-center items-center">
-      <p class="text-thirdary">
+      <p class="text-neutral-500 dark:text-neutral-400">
         Code with ❤ & ☕️ by
         <a class="text-neon" href="https://github.com/xiaoluoboding">
           @xiaoluoboding
