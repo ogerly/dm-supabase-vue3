@@ -76,6 +76,8 @@ import { provide, ref, watch, computed } from 'vue'
 import { I18nVariables, en, merge } from '@supabase/auth-ui-shared'
 import { createStitches } from '@stitches/core'
 import cloneDeep from 'lodash.clonedeep'
+import { colord } from 'colord'
+import colors from 'tailwindcss/colors'
 
 import '../ui/index.css'
 
@@ -150,6 +152,19 @@ watch(
   () => [props.appearance, props.theme],
   () => {
     createStitches({ theme: theme.value })
+  },
+  { deep: true }
+)
+
+watch(
+  () => props.appearance,
+  () => {
+    const currentColor = colors[props.appearance?.brand ?? 'emerald']['500']
+    const hlsColor = colord(currentColor).toHsl()
+    document.documentElement.style.setProperty(
+      '--brand',
+      `${hlsColor.h} ${hlsColor.s}% ${hlsColor.l}%`
+    )
   },
   { deep: true }
 )

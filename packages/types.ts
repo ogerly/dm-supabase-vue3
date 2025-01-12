@@ -1,4 +1,5 @@
 import type { CSSProperties, InjectionKey, Ref } from 'vue'
+import colors from 'tailwindcss/colors'
 import type {
   BaseAppearance,
   I18nVariables,
@@ -17,6 +18,7 @@ import type {
 } from '@supabase/supabase-js'
 
 export interface Appearance extends BaseAppearance {
+  brand: keyof typeof colors
   style?: {
     anchor?: CSSProperties
     button?: CSSProperties

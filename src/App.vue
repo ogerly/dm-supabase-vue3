@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-neutral-50 dark:bg-neutral-900 lg:px-4 min-h-screen flex-center flex-col"
+    class="bg-neutral-50 dark:bg-neutral-900 lg:px-4 min-h-screen flex items-center justify-center flex-col"
   >
     <main
       class="sm:py-18 sm:gap-8 container relative mx-auto grid grid-cols-12 px-6 py-16 md:gap-16 md:py-24 lg:gap-16 lg:px-16 lg:py-24 xl:px-20"
@@ -25,7 +25,7 @@
                     class="w-10 rounded-full p-2"
                     :style="{
                       background: backgroundColor,
-                      color: brandColor
+                      color: currentColor
                     }"
                   >
                     <IconPalette />
@@ -39,22 +39,7 @@
               <Auth
                 :appearance="{
                   theme: ThemeSupa,
-                  style: {
-                    button: {
-                      borderRadius: borderRadius
-                    },
-                    input: {
-                      borderRadius: borderRadius
-                    }
-                  },
-                  variables: {
-                    default: {
-                      colors: {
-                        brand: brandColor,
-                        brandAccent: `gray`
-                      }
-                    }
-                  }
+                  brand: brandColor
                 }"
                 :supabaseClient="supabaseClient"
                 v-model:view="view"
@@ -116,12 +101,65 @@
                     Brand color
                   </div>
                   <div class="flex items-center gap-3">
-                    <ToggleButton
-                      v-model:selected="brandColor"
-                      v-for="color in colors"
-                      :key="color"
-                      :defaultValue="color"
-                      :color="color"
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      :class="
+                        cn(
+                          'rounded-full border-emerald-500 text-brand-foreground bg-emerald-500/20 hover:bg-emerald-500/50',
+                          brandColor === 'emerald' &&
+                            'bg-emerald-500 border-white border-2'
+                        )
+                      "
+                      @click="brandColor = 'emerald'"
+                    />
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      :class="
+                        cn(
+                          'rounded-full border-violet-500 text-brand-foreground bg-violet-500/20 hover:bg-violet-500/50',
+                          brandColor === 'violet' &&
+                            'bg-violet-500 border-white border-2'
+                        )
+                      "
+                      @click="brandColor = 'violet'"
+                    />
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      :class="
+                        cn(
+                          'rounded-full border-fuchsia-500 text-brand-foreground bg-fuchsia-500/20 hover:bg-fuchsia-500/50',
+                          brandColor === 'fuchsia' &&
+                            'bg-fuchsia-500 border-white border-2'
+                        )
+                      "
+                      @click="brandColor = 'fuchsia'"
+                    />
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      :class="
+                        cn(
+                          'rounded-full border-sky-500 text-brand-foreground bg-sky-500/20 hover:bg-sky-500/50',
+                          brandColor === 'sky' &&
+                            'bg-sky-500 border-white border-2'
+                        )
+                      "
+                      @click="brandColor = 'sky'"
+                    />
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      :class="
+                        cn(
+                          'rounded-full border-amber-500 text-brand-foreground bg-amber-500/20 hover:bg-amber-500/50',
+                          brandColor === 'amber' &&
+                            'bg-amber-500 border-white border-2'
+                        )
+                      "
+                      @click="brandColor = 'amber'"
                     />
                   </div>
                 </div>
@@ -213,6 +251,8 @@ import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { createClient } from '@supabase/supabase-js'
+import colors from 'tailwindcss/colors'
+import { colord } from 'colord'
 
 import { isDark } from '~/composables/useDarkmode'
 import { useLanguage } from './composables/useLanguage'
@@ -221,10 +261,11 @@ import Auth from '@/auth/Auth.vue'
 import { AuthViewType } from '@/types'
 import IconMenu from './components/IconMenu.vue'
 import IconPalette from './components/IconPalette.vue'
-import { Button } from '~/components/ui/Button'
+import { Button } from '~/components/ui/button'
 import UserContextProvider, {
   useSupabaseUser
 } from '@/auth/UserContextProvider'
+import { cn } from '~/lib'
 
 const supabaseClient = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -243,20 +284,21 @@ const { locale } = useI18n()
 const { en, zh } = useLanguage()
 
 const classes: { [key: string]: string } = {
-  'rgb(16, 185, 129)': 'container-greenshadow',
-  'rgb(139, 92, 246)': 'container-purpleshadow',
-  'rgb(217, 70, 239)': 'container-pinkshadow',
-  'rgb(14, 165, 233)': 'container-blueshadow',
-  'rgb(245, 158, 11)': 'container-orangeshadow'
+  emerald: 'container-greenshadow',
+  violet: 'container-purpleshadow',
+  fuchsia: 'container-pinkshadow',
+  sky: 'container-blueshadow',
+  amber: 'container-orangeshadow'
 }
 const radii = ['5px', '10px', '20px'] as const
-const colors = [
-  'rgb(16, 185, 129)',
-  'rgb(139, 92, 246)',
-  'rgb(217, 70, 239)',
-  'rgb(14, 165, 233)',
-  'rgb(245, 158, 11)'
-] as const
+
+const brandList: (keyof typeof colors)[] = [
+  'emerald',
+  'violet',
+  'fuchsia',
+  'sky',
+  'amber'
+]
 
 const socialAlignments = ['horizontal', 'vertical'] as const
 
@@ -270,14 +312,18 @@ const views: { id: AuthViewType; title: string }[] = [
   { id: 'anonymous_sign_in', title: 'Anonymous Sign-ins' }
 ]
 
-const brandColor = ref(colors[0])
+const brandColor = ref(brandList[0])
 const borderRadius = ref(radii[0])
 const socialLayout = ref(socialAlignments[0])
 const view = ref(views[0].id)
 
+const currentColor = computed(() => {
+  return colors[brandColor.value]['500']
+})
 const backgroundColor = computed(() => {
-  const opacity = isDark.value ? '.2' : '.48'
-  return brandColor.value.replace('rgb', 'rgba').replace(')', `, ${opacity})`)
+  const opacity = isDark.value ? 0.2 : 0.48
+  const color = colors[brandColor.value]['500']
+  return colord(color).alpha(opacity).toRgbString()
 })
 const theme = computed(() => (isDark.value ? 'dark' : 'default'))
 const I18nVariables = computed(() => (locale.value === 'en-US' ? en : zh))
