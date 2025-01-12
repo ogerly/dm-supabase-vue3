@@ -79,7 +79,7 @@ import cloneDeep from 'lodash.clonedeep'
 import { colord } from 'colord'
 import colors from 'tailwindcss/colors'
 
-import '../ui/index.css'
+import '../../src/global.css'
 
 import { AuthProps, AuthViewKey, AuthViewType } from '../types'
 import SocialAuthContainer from './SocialAuthContainer.vue'
