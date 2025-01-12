@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-neutral-50 dark:bg-neutral-900 lg:px-4 min-h-screen flex items-center justify-center flex-col"
+    class="bg-background lg:px-4 min-h-screen flex items-center justify-center flex-col"
   >
     <main
       class="sm:py-18 sm:gap-8 container relative mx-auto grid grid-cols-12 px-6 py-16 md:gap-16 md:py-24 lg:gap-16 lg:px-16 lg:py-24 xl:px-20"
@@ -9,7 +9,7 @@
         class="relative col-span-12 mb-16 md:col-span-7 md:mb-0 lg:col-span-6"
       >
         <div
-          class="relative lg:mx-auto lg:max-w-md 2xl:max-w-md bg-white dark:bg-neutral-800 rounded-2xl"
+          class="relative lg:mx-auto lg:max-w-md 2xl:max-w-md bg-secondary rounded-2xl"
         >
           <div
             :class="classes[brandColor]"
@@ -230,7 +230,7 @@
                       :key="v.id"
                       :value="v.id"
                       @click.prevent="view = v.id"
-                      :variant="view === v.id ? 'default' : 'outline'"
+                      :variant="view === v.id ? 'brand' : 'default'"
                       class="focus:outline-none rounded text-sm"
                     >
                       {{ v.title }}
