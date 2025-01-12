@@ -109,7 +109,7 @@
                         cn(
                           'rounded-full border-emerald-500 text-brand-foreground bg-emerald-500/20 hover:bg-emerald-500/50',
                           brandColor === 'emerald' &&
-                            'bg-emerald-500 border-white border-2'
+                            'bg-emerald-500 border-emerald-800 dark:border-emerald-200 border-2'
                         )
                       "
                       @click="brandColor = 'emerald'"
@@ -121,7 +121,7 @@
                         cn(
                           'rounded-full border-violet-500 text-brand-foreground bg-violet-500/20 hover:bg-violet-500/50',
                           brandColor === 'violet' &&
-                            'bg-violet-500 border-white border-2'
+                            'bg-violet-500 border-violet-800 dark:border-violet-200 border-2'
                         )
                       "
                       @click="brandColor = 'violet'"
@@ -133,7 +133,7 @@
                         cn(
                           'rounded-full border-fuchsia-500 text-brand-foreground bg-fuchsia-500/20 hover:bg-fuchsia-500/50',
                           brandColor === 'fuchsia' &&
-                            'bg-fuchsia-500 border-white border-2'
+                            'bg-fuchsia-500 border-fuchsia-800 dark:border-fuchsia-200 border-2'
                         )
                       "
                       @click="brandColor = 'fuchsia'"
@@ -145,7 +145,7 @@
                         cn(
                           'rounded-full border-sky-500 text-brand-foreground bg-sky-500/20 hover:bg-sky-500/50',
                           brandColor === 'sky' &&
-                            'bg-sky-500 border-white border-2'
+                            'bg-sky-500 border-sky-800 dark:border-sky-200 border-2'
                         )
                       "
                       @click="brandColor = 'sky'"
@@ -157,7 +157,7 @@
                         cn(
                           'rounded-full border-amber-500 text-brand-foreground bg-amber-500/20 hover:bg-amber-500/50',
                           brandColor === 'amber' &&
-                            'bg-amber-500 border-white border-2'
+                            'bg-amber-500 border-amber-800 dark:border-amber-200 border-2'
                         )
                       "
                       @click="brandColor = 'amber'"

@@ -12,7 +12,7 @@ const delegatedProps = computed(() => {
 <template>
   <a
     v-bind="delegatedProps"
-    class="group text-center underline block text-sm w-full items-center rounded-md border border-transparent px-2 py-1 hover:no-underline font-semibold text-muted-foreground"
+    class="group text-center underline block text-sm w-full items-center rounded-md border border-transparent px-2 py-1 font-semibold text-muted-foreground"
     :class="props.class"
   >
     <slot />

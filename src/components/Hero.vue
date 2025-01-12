@@ -33,8 +33,8 @@
           Pre-built auth widgets to get started in minutes.
         </p>
         <p className="text-neutral-500 dark:text-neutral-400 mt-0">
-          Customizable authentication UI component with custom themes and
-          extensible styles to match your brand and aesthetic
+          Customizable authentication UI component with Shadcn Vue UI and
+          extensible themes & styles to match your brand and aesthetic
         </p>
         <div
           className="text-neutral-500 dark:text-neutral-400 mb-4 pt-6 flex items-center space-x-2"
