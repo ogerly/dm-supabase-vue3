@@ -17,6 +17,7 @@
           type="password"
           name="password"
           autofocus
+          :shape="appearance?.shape"
           :placeholder="labels?.password_input_placeholder"
           :appearance="appearance"
           v-model="password"
@@ -28,6 +29,7 @@
         variant="brand"
         :loading="isLoading"
         :appearance="appearance"
+        :shape="appearance?.shape"
       >
         {{ isLoading ? labels?.loading_button_label : labels?.button_label }}
       </Button>

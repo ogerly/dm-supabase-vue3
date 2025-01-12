@@ -13,6 +13,7 @@
         variant="brand"
         :loading="isLoading"
         :appearance="appearance"
+        :shape="appearance?.shape"
       >
         {{ isLoading ? labels?.loading_button_label : labels?.button_label }}
       </Button>

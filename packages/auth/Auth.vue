@@ -147,13 +147,12 @@ const theme = computed(() => {
     appearanceVariables?.[props?.theme] ?? {}
   )
 })
-createStitches({ theme: theme.value })
 watch(
   () => [props.appearance, props.theme],
   () => {
     createStitches({ theme: theme.value })
   },
-  { deep: true }
+  { deep: true, immediate: true }
 )
 
 watch(
@@ -162,11 +161,11 @@ watch(
     const currentColor = colors[props.appearance?.brand ?? 'emerald']['500']
     const hlsColor = colord(currentColor).toHsl()
     document.documentElement.style.setProperty(
-      '--brand',
+      '--auth-ui-brand',
       `${hlsColor.h} ${hlsColor.s}% ${hlsColor.l}%`
     )
   },
-  { deep: true }
+  { deep: true, immediate: true }
 )
 
 watch(

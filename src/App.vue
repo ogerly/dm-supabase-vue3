@@ -32,14 +32,15 @@
                   </div>
                   <h1 class="text-foreground text-2xl">Acme Industries</h1>
                 </div>
-                <p class="text-neutral-400 text-auth-widget-test">
+                <p class="text-muted-foreground">
                   Sign in today for Supa stuff
                 </p>
               </div>
               <Auth
                 :appearance="{
                   theme: ThemeSupa,
-                  brand: brandColor
+                  brand: brandColor,
+                  shape: shape
                 }"
                 :supabaseClient="supabaseClient"
                 v-model:view="view"
@@ -171,18 +172,18 @@
                   </div>
                   <div class="flex items-center gap-3">
                     <ToggleButton
-                      v-model:selected="borderRadius"
-                      :defaultValue="radii[0]"
+                      v-model:selected="shape"
+                      :defaultValue="shapeList[0]"
+                      class="rounded-none border-b-0 border-l-0 bg-neutral-100 dark:bg-neutral-800"
+                    />
+                    <ToggleButton
+                      v-model:selected="shape"
+                      :defaultValue="shapeList[1]"
                       class="rounded-xl border-b-0 border-l-0 bg-neutral-100 dark:bg-neutral-800"
                     />
                     <ToggleButton
-                      v-model:selected="borderRadius"
-                      :defaultValue="radii[1]"
-                      class="rounded-xl border-b-0 border-l-0 bg-neutral-100 dark:bg-neutral-800"
-                    />
-                    <ToggleButton
-                      v-model:selected="borderRadius"
-                      :defaultValue="radii[2]"
+                      v-model:selected="shape"
+                      :defaultValue="shapeList[2]"
                       class="rounded-2xl border-b-0 border-l-0 bg-neutral-100 dark:bg-neutral-800"
                     />
                   </div>
@@ -284,13 +285,12 @@ const { locale } = useI18n()
 const { en, zh } = useLanguage()
 
 const classes: { [key: string]: string } = {
-  emerald: 'container-greenshadow',
-  violet: 'container-purpleshadow',
-  fuchsia: 'container-pinkshadow',
-  sky: 'container-blueshadow',
-  amber: 'container-orangeshadow'
+  emerald: 'container-emeraldshadow',
+  violet: 'container-violetshadow',
+  fuchsia: 'container-fuchsiashadow',
+  sky: 'container-skyshadow',
+  amber: 'container-ambershadow'
 }
-const radii = ['5px', '10px', '20px'] as const
 
 const brandList: (keyof typeof colors)[] = [
   'emerald',
@@ -299,6 +299,7 @@ const brandList: (keyof typeof colors)[] = [
   'sky',
   'amber'
 ]
+const shapeList = ['square', 'rounded', 'pill'] as const
 
 const socialAlignments = ['horizontal', 'vertical'] as const
 
@@ -313,7 +314,7 @@ const views: { id: AuthViewType; title: string }[] = [
 ]
 
 const brandColor = ref(brandList[0])
-const borderRadius = ref(radii[0])
+const shape = ref(shapeList[1])
 const socialLayout = ref(socialAlignments[0])
 const view = ref(views[0].id)
 
@@ -351,43 +352,43 @@ watch(
 </script>
 
 <style scoped>
-.container-purpleshadow {
+.container-violetshadow {
   box-shadow: 0px 0px 256px rgb(139, 92, 246, 0.3);
 }
 
-.container-pinkshadow {
+.container-fuchsiashadow {
   box-shadow: 0px 0px 256px rgb(217, 70, 239, 0.3);
 }
 
-.container-greenshadow {
+.container-emeraldshadow {
   box-shadow: 0px 0px 256px rgb(16, 185, 129, 0.3);
 }
 
-.container-blueshadow {
+.container-skyshadow {
   box-shadow: 0px 0px 256px rgb(14, 165, 233, 0.3);
 }
 
-.container-orangeshadow {
+.container-ambershadow {
   box-shadow: 0px 0px 256px rgb(245, 158, 11, 0.3);
 }
 
-.dark .container-purpleshadow {
+.dark .container-violetshadow {
   box-shadow: 0px 0px 256px rgb(139, 92, 246, 0.6);
 }
 
-.dark .container-pinkshadow {
+.dark .container-fuchsiashadow {
   box-shadow: 0px 0px 256px rgb(217, 70, 239, 0.6);
 }
 
-.dark .container-greenshadow {
+.dark .container-emeraldshadow {
   box-shadow: 0px 0px 256px rgb(16, 185, 129, 0.6);
 }
 
-.dark .container-blueshadow {
+.dark .container-skyshadow {
   box-shadow: 0px 0px 256px rgb(14, 165, 233, 0.6);
 }
 
-.dark .container-orangeshadow {
+.dark .container-ambershadow {
   box-shadow: 0px 0px 256px rgb(245, 158, 11, 0.6);
 }
 </style>

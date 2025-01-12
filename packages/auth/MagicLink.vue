@@ -19,6 +19,7 @@
             name="email"
             autoComplete="email"
             autofocus
+            :shape="appearance?.shape"
             :placeholder="labels?.email_input_placeholder"
             :appearance="appearance"
             v-model="email"
@@ -30,6 +31,7 @@
         type="submit"
         variant="brand"
         :loading="isLoading"
+        :shape="appearance?.shape"
         :appearance="appearance"
       >
         {{ isLoading ? labels?.loading_button_label : labels?.button_label }}

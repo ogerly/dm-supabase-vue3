@@ -9,6 +9,7 @@
         <template v-for="provider in providers" :key="provider">
           <Button
             variant="outline"
+            :shape="appearance?.shape"
             :loading="isLoading"
             :appearance="appearance"
             @click.prevent="() => handleProviderSignIn(provider)"

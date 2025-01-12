@@ -17,6 +17,7 @@
           name="phone"
           type="text"
           autofocus
+          :shape="appearance?.shape"
           :placeholder="labels?.phone_input_placeholder"
           :appearance="appearance"
           v-model="phone"
@@ -32,6 +33,7 @@
           type="email"
           autoComplete="email"
           autofocus
+          :shape="appearance?.shape"
           :placeholder="labels?.email_input_placeholder"
           :appearance="appearance"
           v-model="email"
@@ -46,6 +48,7 @@
           name="token"
           type="text"
           autofocus
+          :shape="appearance?.shape"
           :placeholder="labels?.token_input_placeholder"
           :appearance="appearance"
           v-model="token"
@@ -57,6 +60,7 @@
         variant="brand"
         :loading="isLoading"
         :appearance="appearance"
+        :shape="appearance?.shape"
       >
         {{ isLoading ? labels?.loading_button_label : labels?.button_label }}
       </Button>

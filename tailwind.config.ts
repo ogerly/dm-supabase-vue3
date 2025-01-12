@@ -56,9 +56,9 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
         },
-        brand: {
-          DEFAULT: 'hsl(var(--brand))',
-          foreground: '#fff'
+        'auth-ui-brand': {
+          DEFAULT: 'hsl(var(--auth-ui-brand))',
+          foreground: 'hsl(255 255 255)'
         }
       },
       borderRadius: {

@@ -18,6 +18,7 @@
             type="email"
             name="email"
             v-model="email"
+            :shape="appearance?.shape"
             :placeholder="labels?.email_input_placeholder"
             autoComplete="email"
             :appearance="appearance"
@@ -32,6 +33,7 @@
             type="password"
             name="password"
             v-model="password"
+            :shape="appearance?.shape"
             :placeholder="labels?.password_input_placeholder"
             :autoComplete="
               authView === 'sign_in' ? 'current-password' : 'new-password'
@@ -44,6 +46,7 @@
       <Button
         type="submit"
         variant="brand"
+        :shape="appearance?.shape"
         :loading="isLoading"
         :appearance="appearance"
       >

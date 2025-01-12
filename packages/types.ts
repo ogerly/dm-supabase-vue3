@@ -19,6 +19,8 @@ import type {
 
 export interface Appearance extends BaseAppearance {
   brand: keyof typeof colors
+  size?: 'default' | 'sm' | 'md' | 'lg'
+  shape: 'square' | 'rounded' | 'pill'
   style?: {
     anchor?: CSSProperties
     button?: CSSProperties
