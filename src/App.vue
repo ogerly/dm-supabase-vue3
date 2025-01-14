@@ -12,7 +12,7 @@
           class="relative lg:mx-auto lg:max-w-md 2xl:max-w-md bg-secondary rounded-2xl"
         >
           <div
-            :class="classes[brandColor]"
+            :class="brandClasses[authBrandColor]"
             class="rounded-2xl lg:min-w-md 2xl:min-w-md"
           >
             <div
@@ -39,8 +39,8 @@
               <Auth
                 :appearance="{
                   theme: ThemeSupa,
-                  brand: brandColor,
-                  shape: shape
+                  brand: authBrandColor,
+                  shape: authShape
                 }"
                 :supabaseClient="supabaseClient"
                 v-model:view="view"
@@ -65,7 +65,7 @@
                     class="w-10 rounded-full p-2"
                     :style="{
                       background: backgroundColor,
-                      color: brandColor
+                      color: authBrandColor
                     }"
                   >
                     <IconPalette />
@@ -103,64 +103,18 @@
                   </div>
                   <div class="flex items-center gap-3">
                     <Button
+                      v-for="color in brandList"
+                      :key="color"
                       variant="outline"
                       size="icon"
                       :class="
                         cn(
-                          'rounded-full border-emerald-500 text-brand-foreground bg-emerald-500/20 hover:bg-emerald-500/50',
-                          brandColor === 'emerald' &&
-                            'bg-emerald-500 border-emerald-800 dark:border-emerald-200 border-2'
+                          `rounded-full border-${color}-500 text-brand-foreground bg-${color}-500/20 hover:bg-${color}-500/50`,
+                          authBrandColor === color &&
+                            `bg-${color}-500 border-${color}-800 dark:border-${color}-200 border-2`
                         )
                       "
-                      @click="brandColor = 'emerald'"
-                    />
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      :class="
-                        cn(
-                          'rounded-full border-violet-500 text-brand-foreground bg-violet-500/20 hover:bg-violet-500/50',
-                          brandColor === 'violet' &&
-                            'bg-violet-500 border-violet-800 dark:border-violet-200 border-2'
-                        )
-                      "
-                      @click="brandColor = 'violet'"
-                    />
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      :class="
-                        cn(
-                          'rounded-full border-fuchsia-500 text-brand-foreground bg-fuchsia-500/20 hover:bg-fuchsia-500/50',
-                          brandColor === 'fuchsia' &&
-                            'bg-fuchsia-500 border-fuchsia-800 dark:border-fuchsia-200 border-2'
-                        )
-                      "
-                      @click="brandColor = 'fuchsia'"
-                    />
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      :class="
-                        cn(
-                          'rounded-full border-sky-500 text-brand-foreground bg-sky-500/20 hover:bg-sky-500/50',
-                          brandColor === 'sky' &&
-                            'bg-sky-500 border-sky-800 dark:border-sky-200 border-2'
-                        )
-                      "
-                      @click="brandColor = 'sky'"
-                    />
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      :class="
-                        cn(
-                          'rounded-full border-amber-500 text-brand-foreground bg-amber-500/20 hover:bg-amber-500/50',
-                          brandColor === 'amber' &&
-                            'bg-amber-500 border-amber-800 dark:border-amber-200 border-2'
-                        )
-                      "
-                      @click="brandColor = 'amber'"
+                      @click="authBrandColor = color"
                     />
                   </div>
                 </div>
@@ -172,17 +126,17 @@
                   </div>
                   <div class="flex items-center gap-3">
                     <ToggleButton
-                      v-model:selected="shape"
+                      v-model:selected="authShape"
                       :defaultValue="shapeList[0]"
                       class="rounded-none border-b-0 border-l-0 bg-neutral-100 dark:bg-neutral-800"
                     />
                     <ToggleButton
-                      v-model:selected="shape"
+                      v-model:selected="authShape"
                       :defaultValue="shapeList[1]"
                       class="rounded-xl border-b-0 border-l-0 bg-neutral-100 dark:bg-neutral-800"
                     />
                     <ToggleButton
-                      v-model:selected="shape"
+                      v-model:selected="authShape"
                       :defaultValue="shapeList[2]"
                       class="rounded-2xl border-b-0 border-l-0 bg-neutral-100 dark:bg-neutral-800"
                     />
@@ -284,7 +238,7 @@ const { supabaseUser } = useSupabaseUser(supabaseClient)
 const { locale } = useI18n()
 const { en, zh } = useLanguage()
 
-const classes: { [key: string]: string } = {
+const brandClasses: { [key: string]: string } = {
   emerald: 'container-emeraldshadow',
   violet: 'container-violetshadow',
   fuchsia: 'container-fuchsiashadow',
@@ -313,17 +267,17 @@ const views: { id: AuthViewType; title: string }[] = [
   { id: 'anonymous_sign_in', title: 'Anonymous Sign-ins' }
 ]
 
-const brandColor = ref(brandList[0])
-const shape = ref(shapeList[1])
+const authBrandColor = ref(brandList[0])
+const authShape = ref(shapeList[1])
 const socialLayout = ref(socialAlignments[0])
 const view = ref(views[0].id)
 
 const currentColor = computed(() => {
-  return colors[brandColor.value]['500']
+  return colors[authBrandColor.value]['500']
 })
 const backgroundColor = computed(() => {
   const opacity = isDark.value ? 0.2 : 0.48
-  const color = colors[brandColor.value]['500']
+  const color = colors[authBrandColor.value]['500']
   return colord(color).alpha(opacity).toRgbString()
 })
 const theme = computed(() => (isDark.value ? 'dark' : 'default'))

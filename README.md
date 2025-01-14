@@ -70,7 +70,8 @@ yarn add @supabase/supabase-js @supabase/auth-ui-shared @supa-kit/auth-ui-vue -D
   <Auth
     :supabaseClient="supabaseClient"
     :appearance="{
-      theme: ThemeSupa
+      theme: ThemeSupa,
+      brand: 'emerald'
     }"
   />
   ...
