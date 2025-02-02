@@ -102,25 +102,37 @@
                     Brand color
                   </div>
                   <div class="flex items-center gap-3">
-                    <Button
-                      v-for="color in brandList"
-                      :key="color"
-                      variant="outline"
-                      size="icon"
-                      :class="
-                        cn(
-                          `rounded-full border-${color}-500 text-brand-foreground bg-${color}-500/20 hover:bg-${color}-500/50`,
-                          authBrandColor === color && `border-2`
-                        )
-                      "
-                      :style="{
-                        background: colord(colors[color]['500']).toRgbString(),
-                        borderColor: isDark
-                          ? colord(colors[color]['200']).toRgbString()
-                          : colord(colors[color]['800']).toRgbString()
-                      }"
-                      @click="authBrandColor = color"
-                    />
+                    <template v-for="color in brandList">
+                      <TooltipProvider>
+                        <Tooltip :delay-duration="0">
+                          <TooltipTrigger>
+                            <Button
+                              :key="color"
+                              variant="outline"
+                              size="icon"
+                              :class="
+                                cn(
+                                  `rounded-full border-${color}-500 text-brand-foreground bg-${color}-500/20 hover:bg-${color}-500/50`,
+                                  authBrandColor === color && `border-2`
+                                )
+                              "
+                              :style="{
+                                background: colord(
+                                  colors[color]['500']
+                                ).toRgbString(),
+                                borderColor: isDark
+                                  ? colord(colors[color]['200']).toRgbString()
+                                  : colord(colors[color]['800']).toRgbString()
+                              }"
+                              @click="authBrandColor = color"
+                            />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            {{ color.charAt(0).toUpperCase() + color.slice(1) }}
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </template>
                   </div>
                 </div>
 
@@ -222,6 +234,12 @@ import { AuthViewType } from '@/types'
 import IconMenu from './components/IconMenu.vue'
 import IconPalette from './components/IconPalette.vue'
 import { Button } from '~/components/ui/button'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '~/components/ui/tooltip'
 import UserContextProvider, {
   useSupabaseUser
 } from '@/auth/UserContextProvider'
