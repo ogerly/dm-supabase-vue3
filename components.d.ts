@@ -17,5 +17,9 @@ declare module '@vue/runtime-core' {
     Label: typeof import('./src/components/ui/label/Label.vue')['default']
     Separator: typeof import('./src/components/ui/separator/Separator.vue')['default']
     ToggleButton: typeof import('./src/components/ToggleButton.vue')['default']
+    Tooltip: typeof import('./src/components/ui/tooltip/Tooltip.vue')['default']
+    TooltipContent: typeof import('./src/components/ui/tooltip/TooltipContent.vue')['default']
+    TooltipProvider: typeof import('./src/components/ui/tooltip/TooltipProvider.vue')['default']
+    TooltipTrigger: typeof import('./src/components/ui/tooltip/TooltipTrigger.vue')['default']
   }
 }

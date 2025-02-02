@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --port 3003",
     "build:docs": "vite build --mode docs",
-    "build:lib": "vue-tsc --noEmit && vite build --mode lib",
+    "build:lib": "vue-tsc --noEmit && vite build --mode lib && cd lib && rm -rf *.mp4 && cd ..",
     "preview": "vite preview",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
