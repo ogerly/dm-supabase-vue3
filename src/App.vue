@@ -110,10 +110,15 @@
                       :class="
                         cn(
                           `rounded-full border-${color}-500 text-brand-foreground bg-${color}-500/20 hover:bg-${color}-500/50`,
-                          authBrandColor === color &&
-                            `bg-${color}-500 border-${color}-800 dark:border-${color}-200 border-2`
+                          authBrandColor === color && `border-2`
                         )
                       "
+                      :style="{
+                        background: colord(colors[color]['500']).toRgbString(),
+                        borderColor: isDark
+                          ? colord(colors[color]['200']).toRgbString()
+                          : colord(colors[color]['800']).toRgbString()
+                      }"
                       @click="authBrandColor = color"
                     />
                   </div>
@@ -280,6 +285,7 @@ const backgroundColor = computed(() => {
   const color = colors[authBrandColor.value]['500']
   return colord(color).alpha(opacity).toRgbString()
 })
+
 const theme = computed(() => (isDark.value ? 'dark' : 'default'))
 const I18nVariables = computed(() => (locale.value === 'en-US' ? en : zh))
 const redirectTo = computed(() => {

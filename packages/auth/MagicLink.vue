@@ -8,24 +8,22 @@
     }"
   >
     <Container direction="vertical" gap="large" :appearance="appearance">
-      <Container direction="vertical" gap="large" :appearance="appearance">
-        <div>
-          <Label htmlFor="email" :appearance="appearance">
-            {{ labels?.email_input_label }}
-          </Label>
-          <Input
-            id="email"
-            type="email"
-            name="email"
-            autoComplete="email"
-            autofocus
-            :shape="appearance?.shape"
-            :placeholder="labels?.email_input_placeholder"
-            :appearance="appearance"
-            v-model="email"
-          />
-        </div>
-      </Container>
+      <div>
+        <Label htmlFor="email" :appearance="appearance">
+          {{ labels?.email_input_label }}
+        </Label>
+        <Input
+          id="email"
+          type="email"
+          name="email"
+          autoComplete="email"
+          autofocus
+          :shape="appearance?.shape"
+          :placeholder="labels?.email_input_placeholder"
+          :appearance="appearance"
+          v-model="email"
+        />
+      </div>
 
       <Button
         type="submit"

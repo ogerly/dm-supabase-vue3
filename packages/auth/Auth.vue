@@ -7,7 +7,7 @@
     :appearance="appearance"
   >
     <SocialAuth
-      v-if="isSignView"
+      v-if="authView === VIEWS.SIGN_IN || authView === VIEWS.SIGN_UP"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :providers="providers"
@@ -20,7 +20,7 @@
     />
     <template v-if="!onlyThirdPartyProviders">
       <EmailAuth
-        v-if="authView === 'sign_in' || authView === 'sign_up'"
+        v-if="authView === VIEWS.SIGN_IN || authView === VIEWS.SIGN_UP"
         :supabaseClient="supabaseClient"
         :appearance="appearance"
         :redirectTo="redirectTo"
@@ -30,7 +30,7 @@
         :additionalData="additionalData"
       />
       <MagicLink
-        v-if="authView === 'magic_link'"
+        v-if="authView === VIEWS.MAGIC_LINK"
         :supabaseClient="supabaseClient"
         :appearance="appearance"
         :redirectTo="redirectTo"
@@ -41,7 +41,7 @@
   </SocialAuthContainer>
   <template v-else>
     <ForgottenPassword
-      v-if="authView === 'forgotten_password'"
+      v-if="authView === VIEWS.FORGOTTEN_PASSWORD"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :redirectTo="redirectTo"
@@ -49,20 +49,20 @@
       :i18n="i18n"
     />
     <UpdatePassword
-      v-if="authView === 'update_password'"
+      v-if="authView === VIEWS.UPDATE_PASSWORD"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :i18n="i18n"
     />
     <VerifyOtp
-      v-if="authView === 'verify_otp'"
+      v-if="authView === VIEWS.VERIFY_OTP"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :otpType="otpType"
       :i18n="i18n"
     />
     <AnonymousAuth
-      v-if="authView === 'anonymous_sign_in'"
+      v-if="authView === VIEWS.ANONYMOUS_SIGN_IN"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :i18n="i18n"
@@ -73,7 +73,7 @@
 
 <script lang="ts" setup>
 import { provide, ref, watch, computed } from 'vue'
-import { I18nVariables, en, merge } from '@supabase/auth-ui-shared'
+import { I18nVariables, en, merge, VIEWS } from '@supabase/auth-ui-shared'
 import { createStitches } from '@stitches/core'
 import cloneDeep from 'lodash.clonedeep'
 import { colord } from 'colord'
@@ -92,7 +92,7 @@ import VerifyOtp from './VerifyOtp.vue'
 import AnonymousAuth from './AnonymousAuth.vue'
 
 const props = withDefaults(defineProps<AuthProps>(), {
-  view: 'sign_in',
+  view: VIEWS.SIGN_IN,
   socialLayout: 'vertical',
   onlyThirdPartyProviders: false,
   magicLink: false,
@@ -131,9 +131,9 @@ const i18n = computed<I18nVariables>(() => {
  */
 const isSignView = computed(() => {
   return (
-    authView.value === 'sign_in' ||
-    authView.value === 'sign_up' ||
-    authView.value === 'magic_link'
+    authView.value === VIEWS.SIGN_IN ||
+    authView.value === VIEWS.SIGN_UP ||
+    authView.value === VIEWS.MAGIC_LINK
   )
 })
 
@@ -177,9 +177,9 @@ watch(
     const { data: authListener } = props.supabaseClient.auth.onAuthStateChange(
       (event) => {
         if (event === 'PASSWORD_RECOVERY') {
-          setAuthView('update_password')
+          setAuthView(VIEWS.UPDATE_PASSWORD)
         } else if (event === 'USER_UPDATED') {
-          setAuthView('sign_in')
+          setAuthView(VIEWS.SIGN_IN)
         }
       }
     )
