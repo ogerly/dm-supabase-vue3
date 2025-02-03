@@ -1,3 +1,13 @@
+## [0.4.3](https://github.com/supa-kit/auth-ui-vue/compare/v0.4.2...v0.4.3) (2025-02-03)
+
+
+### Bug Fixes
+
+* fixed build ([2e18ca6](https://github.com/supa-kit/auth-ui-vue/commit/2e18ca68ee2b0026088b75e512f2d787703a5283))
+* fixed the build ([511059e](https://github.com/supa-kit/auth-ui-vue/commit/511059e270ff57554940dde3c5516b4caa4e679a))
+
+
+
 ## [0.4.2](https://github.com/supa-kit/auth-ui-vue/compare/v0.4.1...v0.4.2) (2025-02-03)
 
 
