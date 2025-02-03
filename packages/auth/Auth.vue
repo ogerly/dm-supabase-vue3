@@ -7,9 +7,7 @@
     :appearance="appearance"
   >
     <SocialAuth
-      v-if="
-        authView === AuthViewType.SIGN_IN || authView === AuthViewType.SIGN_UP
-      "
+      v-if="authView === VIEWS.SIGN_IN || authView === VIEWS.SIGN_UP"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :providers="providers"
@@ -22,9 +20,7 @@
     />
     <template v-if="!onlyThirdPartyProviders">
       <EmailAuth
-        v-if="
-          authView === AuthViewType.SIGN_IN || authView === AuthViewType.SIGN_UP
-        "
+        v-if="authView === VIEWS.SIGN_IN || authView === VIEWS.SIGN_UP"
         :supabaseClient="supabaseClient"
         :appearance="appearance"
         :redirectTo="redirectTo"
@@ -34,7 +30,7 @@
         :additionalData="additionalData"
       />
       <MagicLink
-        v-if="authView === AuthViewType.MAGIC_LINK"
+        v-if="authView === VIEWS.MAGIC_LINK"
         :supabaseClient="supabaseClient"
         :appearance="appearance"
         :redirectTo="redirectTo"
@@ -45,7 +41,7 @@
   </SocialAuthContainer>
   <template v-else>
     <ForgottenPassword
-      v-if="authView === AuthViewType.FORGOTTEN_PASSWORD"
+      v-if="authView === VIEWS.FORGOTTEN_PASSWORD"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :redirectTo="redirectTo"
@@ -53,20 +49,20 @@
       :i18n="i18n"
     />
     <UpdatePassword
-      v-if="authView === AuthViewType.UPDATE_PASSWORD"
+      v-if="authView === VIEWS.UPDATE_PASSWORD"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :i18n="i18n"
     />
     <VerifyOtp
-      v-if="authView === AuthViewType.VERIFY_OTP"
+      v-if="authView === VIEWS.VERIFY_OTP"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :otpType="otpType"
       :i18n="i18n"
     />
     <AnonymousAuth
-      v-if="authView === AuthViewType.ANONYMOUS_SIGN_IN"
+      v-if="authView === 'anonymous_sign_in'"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :i18n="i18n"
