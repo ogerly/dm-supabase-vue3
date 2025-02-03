@@ -1,3 +1,7 @@
+## [0.4.2](https://github.com/supa-kit/auth-ui-vue/compare/v0.4.1...v0.4.2) (2025-02-03)
+
+
+
 ## [0.4.1](https://github.com/supa-kit/auth-ui-vue/compare/v0.4.0...v0.4.1) (2025-02-03)
 
 
