@@ -43,15 +43,15 @@
         </div>
       </Container>
 
-      <Button
+      <BrandButton
         type="submit"
-        variant="brand"
         :shape="appearance?.shape"
+        :brand="appearance?.brand"
         :loading="isLoading"
         :appearance="appearance"
       >
         {{ isLoading ? labels?.loading_button_label : labels?.button_label }}
-      </Button>
+      </BrandButton>
 
       <template v-if="showLinks">
         <Container direction="vertical" gap="small" :appearance="appearance">
@@ -114,7 +114,15 @@ import {
   type AuthViewInjection,
   type AuthI18nVariables
 } from '../types'
-import { Anchor, Button, Container, Input, Label, Message } from '../ui/index'
+import {
+  Anchor,
+  Button,
+  BrandButton,
+  Container,
+  Input,
+  Label,
+  Message
+} from '../ui/index'
 import { injectStrict } from '../utils'
 
 export interface EmailAuthProps {

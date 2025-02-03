@@ -7,7 +7,9 @@
     :appearance="appearance"
   >
     <SocialAuth
-      v-if="authView === VIEWS.SIGN_IN || authView === VIEWS.SIGN_UP"
+      v-if="
+        authView === AuthViewType.SIGN_IN || authView === AuthViewType.SIGN_UP
+      "
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :providers="providers"
@@ -20,7 +22,9 @@
     />
     <template v-if="!onlyThirdPartyProviders">
       <EmailAuth
-        v-if="authView === VIEWS.SIGN_IN || authView === VIEWS.SIGN_UP"
+        v-if="
+          authView === AuthViewType.SIGN_IN || authView === AuthViewType.SIGN_UP
+        "
         :supabaseClient="supabaseClient"
         :appearance="appearance"
         :redirectTo="redirectTo"
@@ -30,7 +34,7 @@
         :additionalData="additionalData"
       />
       <MagicLink
-        v-if="authView === VIEWS.MAGIC_LINK"
+        v-if="authView === AuthViewType.MAGIC_LINK"
         :supabaseClient="supabaseClient"
         :appearance="appearance"
         :redirectTo="redirectTo"
@@ -41,7 +45,7 @@
   </SocialAuthContainer>
   <template v-else>
     <ForgottenPassword
-      v-if="authView === VIEWS.FORGOTTEN_PASSWORD"
+      v-if="authView === AuthViewType.FORGOTTEN_PASSWORD"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :redirectTo="redirectTo"
@@ -49,20 +53,20 @@
       :i18n="i18n"
     />
     <UpdatePassword
-      v-if="authView === VIEWS.UPDATE_PASSWORD"
+      v-if="authView === AuthViewType.UPDATE_PASSWORD"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :i18n="i18n"
     />
     <VerifyOtp
-      v-if="authView === VIEWS.VERIFY_OTP"
+      v-if="authView === AuthViewType.VERIFY_OTP"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :otpType="otpType"
       :i18n="i18n"
     />
     <AnonymousAuth
-      v-if="authView === VIEWS.ANONYMOUS_SIGN_IN"
+      v-if="authView === AuthViewType.ANONYMOUS_SIGN_IN"
       :supabaseClient="supabaseClient"
       :appearance="appearance"
       :i18n="i18n"
@@ -76,8 +80,6 @@ import { provide, ref, watch, computed } from 'vue'
 import { I18nVariables, en, merge, VIEWS } from '@supabase/auth-ui-shared'
 import { createStitches } from '@stitches/core'
 import cloneDeep from 'lodash.clonedeep'
-import { colord } from 'colord'
-import colors from 'tailwindcss/colors'
 
 import '../../src/global.css'
 
@@ -151,19 +153,6 @@ watch(
   () => [props.appearance, props.theme],
   () => {
     createStitches({ theme: theme.value })
-  },
-  { deep: true, immediate: true }
-)
-
-watch(
-  () => props.appearance,
-  () => {
-    const currentColor = colors[props.appearance?.brand ?? 'emerald']['500']
-    const hlsColor = colord(currentColor).toHsl()
-    document.documentElement.style.setProperty(
-      '--auth-ui-brand',
-      `${hlsColor.h} ${hlsColor.s}% ${hlsColor.l}%`
-    )
   },
   { deep: true, immediate: true }
 )

@@ -10,7 +10,6 @@
     <Container direction="vertical" gap="large" :appearance="appearance">
       <Button
         type="submit"
-        variant="brand"
         :loading="isLoading"
         :appearance="appearance"
         :shape="appearance?.shape"

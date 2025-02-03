@@ -25,15 +25,15 @@
         />
       </div>
 
-      <Button
+      <BrandButton
         type="submit"
-        variant="brand"
         :loading="isLoading"
         :shape="appearance?.shape"
+        :brand="appearance?.brand"
         :appearance="appearance"
       >
         {{ isLoading ? labels?.loading_button_label : labels?.button_label }}
-      </Button>
+      </BrandButton>
 
       <template v-if="showLinks">
         <Anchor
@@ -65,7 +65,15 @@ import {
   type AuthViewInjection,
   type AuthI18nVariables
 } from '../types'
-import { Anchor, Button, Container, Input, Label, Message } from '../ui/index'
+import {
+  Anchor,
+  Button,
+  BrandButton,
+  Container,
+  Input,
+  Label,
+  Message
+} from '../ui/index'
 import { injectStrict } from '../utils'
 import { useSupabaseUser } from './UserContextProvider'
 

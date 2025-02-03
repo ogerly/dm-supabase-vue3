@@ -201,7 +201,7 @@
                       :key="v.id"
                       :value="v.id"
                       @click.prevent="view = v.id"
-                      :variant="view === v.id ? 'brand' : 'default'"
+                      :variant="view === v.id ? 'default' : 'outline'"
                       class="focus:outline-none rounded text-sm"
                     >
                       {{ v.title }}

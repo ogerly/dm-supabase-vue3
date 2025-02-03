@@ -16,8 +16,17 @@ import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 export default defineConfig(({ command, mode }) => {
   let userConfig: UserConfig = {}
 
-  // console.log(command)
-  // console.log(mode)
+  // Development mode CSS configuration
+  const cssConfig =
+    mode !== 'lib'
+      ? {
+          css: {
+            postcss: {
+              plugins: [tailwind(), autoprefixer()]
+            }
+          }
+        }
+      : {}
 
   const commonPlugins = [
     Vue(),
@@ -45,7 +54,6 @@ export default defineConfig(({ command, mode }) => {
       outDir: 'lib',
       emptyOutDir: true,
       sourcemap: false,
-      cssCodeSplit: true,
       rollupOptions: {
         external: ['vue'],
         output: {
@@ -59,17 +67,13 @@ export default defineConfig(({ command, mode }) => {
       ...commonPlugins,
       dts({
         include: './packages'
-      }),
-      libInjectCss()
+      })
+      // libInjectCss()
     ]
   }
 
   return {
-    css: {
-      postcss: {
-        plugins: [tailwind(), autoprefixer()]
-      }
-    },
+    ...cssConfig,
     resolve: {
       alias: {
         '@': resolve(__dirname, '/packages'),

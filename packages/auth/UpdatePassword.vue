@@ -24,15 +24,15 @@
         />
       </div>
 
-      <Button
+      <BrandButton
         type="submit"
-        variant="brand"
         :loading="isLoading"
-        :appearance="appearance"
         :shape="appearance?.shape"
+        :brand="appearance?.brand"
+        :appearance="appearance"
       >
         {{ isLoading ? labels?.loading_button_label : labels?.button_label }}
-      </Button>
+      </BrandButton>
     </Container>
 
     <Message v-if="message" :appearance="appearance">{{ message }}</Message>
@@ -53,7 +53,14 @@ import {
   type AuthViewInjection,
   type AuthI18nVariables
 } from '../types'
-import { Button, Container, Input, Label, Message } from '../ui/index'
+import {
+  Button,
+  BrandButton,
+  Container,
+  Input,
+  Label,
+  Message
+} from '../ui/index'
 import { injectStrict } from '../utils'
 
 export interface UpdatePasswordProps {
