@@ -32,15 +32,11 @@ const props = withDefaults(defineProps<BrandButtonProps>(), {
   loading: false
 })
 
-const currentColor = computed(() => {
-  return colors[props.brand]['500']
-})
-
-const brandButtonStyle = computed(() => {
+const classNames = computed(() => {
   const baseColor = colors[props.brand]['500']
   const hoverColor = colord(baseColor).darken(0.08).toRgbString()
 
-  return css({
+  const brandButtonStyle = css({
     color: '#fff',
     backgroundColor: baseColor,
     transition: 'background-color 0.3s ease',
@@ -48,12 +44,10 @@ const brandButtonStyle = computed(() => {
       backgroundColor: hoverColor
     }
   })
-})
 
-const classNames = computed(() => {
   const names = generateClassNames(
     'button',
-    brandButtonStyle.value,
+    brandButtonStyle(),
     props.appearance
   )
   return names.join(' ')
