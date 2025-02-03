@@ -24,7 +24,7 @@
   "module": "./lib/auth-ui-vue.js",
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./lib/packages/index.d.ts",
       "import": "./lib/auth-ui-vue.js",
       "require": "./lib/auth-ui-vue.umd.cjs"
     }

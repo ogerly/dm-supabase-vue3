@@ -1,6 +1,11 @@
 ## [0.4.2](https://github.com/supa-kit/auth-ui-vue/compare/v0.4.1...v0.4.2) (2025-02-03)
 
 
+### Features
+
+* fixed the brand button ([df48196](https://github.com/supa-kit/auth-ui-vue/commit/df481964a68f98b6a0e4309c1e9762afd5241a71))
+
+
 
 ## [0.4.1](https://github.com/supa-kit/auth-ui-vue/compare/v0.4.0...v0.4.1) (2025-02-03)
 
