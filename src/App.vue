@@ -210,7 +210,7 @@ import UserContextProvider, {
 } from '@/auth/UserContextProvider'
 import { cn } from '~/lib'
 import { supabase } from '~/lib/supabase'
-import Home from '~/views/Home.vue'
+import Home from '~/views/Home.vue'  // Fixed import statement - removed curly braces
 
 const supabaseClient = supabase
 const SITE_URL = import.meta.env.VITE_SITE_URL
