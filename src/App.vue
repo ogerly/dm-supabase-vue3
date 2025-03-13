@@ -99,10 +99,11 @@
                 <!-- Brand color -->
                 <div class="flex flex-col gap-6">
                   <div class="text-secondary-foreground text-base">
-                    Brand color
+                    Markenfarbe
                   </div>
                   <div class="flex items-center gap-3">
-                    <template v-for="color in brandList">
+                    <template v-for="color in brandList" :key="color">
+                      <!--<TooltipProvider :key="color">-->
                       <TooltipProvider>
                         <Tooltip :delay-duration="0">
                           <TooltipTrigger>

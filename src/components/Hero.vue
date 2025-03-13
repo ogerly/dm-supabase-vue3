@@ -5,7 +5,7 @@
         <div
           className="text-foreground items-center flex w-full text-2xl mb-8 justify-between"
         >
-          <div>Auth UI Vue</div>
+          <div>DreamMall v.0.0.1 beta</div>
           <div class="flex items-center gap-2">
             <div
               class="cursor-pointer hover:bg-neutral-200 hover:dark:bg-neutral-700 p-2 rounded-md"
@@ -30,17 +30,16 @@
           </div>
         </div>
         <p className="text-secondary-foreground !mb-0">
-          Pre-built auth widgets to get started in minutes.
+          Vorgefertigte Authentifizierungs-Widgets für einen schnellen Einstieg. 
         </p>
         <p className="text-neutral-500 dark:text-neutral-400 mt-0">
-          Customizable authentication UI component with Shadcn Vue UI and
-          extensible themes & styles to match your brand and aesthetic
+          Authentifizierungs-UI-Komponente mit Shadcn Vue UI und erweiterbaren Designs und Stilen passend zu Ihrer Marke und Ästhetik.
         </p>
         <div
           className="text-neutral-500 dark:text-neutral-400 mb-4 pt-6 flex items-center space-x-2"
         >
           <small class="flex items-center">
-            Ready for &nbsp; <logos:vue /> &nbsp;Vue 3 &nbsp;/&nbsp;
+            Bereit für &nbsp; <logos:vue /> &nbsp;Vue 3 &nbsp;/&nbsp;
             <logos:nuxt-icon />&nbsp;Nuxt 3
           </small>
         </div>
