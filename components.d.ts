@@ -24,6 +24,8 @@ declare module '@vue/runtime-core' {
     'Ri:moonLine': typeof import('~icons/ri/moon-line')['default']
     'Ri:sunLine': typeof import('~icons/ri/sun-line')['default']
     'Ri:translate2': typeof import('~icons/ri/translate2')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
     Separator: typeof import('./src/components/ui/separator/Separator.vue')['default']
     ToggleButton: typeof import('./src/components/ToggleButton.vue')['default']
     Tooltip: typeof import('./src/components/ui/tooltip/Tooltip.vue')['default']

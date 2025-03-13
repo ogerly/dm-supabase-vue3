@@ -1,24 +1,13 @@
 <template>
-  <div
-    class="bg-background lg:px-4 min-h-screen flex items-center justify-center flex-col"
-  >
-    <main
-      class="sm:py-18 sm:gap-8 container relative mx-auto grid grid-cols-12 px-6 py-16 md:gap-16 md:py-24 lg:gap-16 lg:px-16 lg:py-24 xl:px-20"
-    >
-      <section
-        class="relative col-span-12 mb-16 md:col-span-7 md:mb-0 lg:col-span-6"
-      >
-        <div
-          class="relative lg:mx-auto lg:max-w-md 2xl:max-w-md bg-secondary rounded-2xl"
-        >
-          <div
-            :class="brandClasses[authBrandColor]"
-            class="rounded-2xl lg:min-w-md 2xl:min-w-md"
-          >
-            <div
-              class="border-neutral-400 bg-background relative rounded-xl px-8 py-12 drop-shadow-sm"
-              v-if="!isLogged"
-            >
+  <div v-if="isLogged">
+    <Home />
+  </div>
+  <div v-else class="bg-background lg:px-4 min-h-screen flex items-center justify-center flex-col">
+    <main class="sm:py-18 sm:gap-8 container relative mx-auto grid grid-cols-12 px-6 py-16 md:gap-16 md:py-24 lg:gap-16 lg:px-16 lg:py-24 xl:px-20">
+      <section class="relative col-span-12 mb-16 md:col-span-7 md:mb-0 lg:col-span-6">
+        <div class="relative lg:mx-auto lg:max-w-md 2xl:max-w-md bg-secondary rounded-2xl">
+          <div :class="brandClasses[authBrandColor]" class="rounded-2xl lg:min-w-md 2xl:min-w-md">
+            <div class="border-neutral-400 bg-background relative rounded-xl px-8 py-12 drop-shadow-sm">
               <div class="flex flex-col gap-6">
                 <div class="flex items-center gap-3">
                   <div
@@ -30,10 +19,10 @@
                   >
                     <IconPalette />
                   </div>
-                  <h1 class="text-foreground text-2xl">Acme Industries</h1>
+                  <h1 class="text-foreground text-2xl">DreamMall</h1>
                 </div>
                 <p class="text-muted-foreground">
-                  Sign in today for Supa stuff
+                  Sign in to access your account
                 </p>
               </div>
               <Auth
@@ -54,31 +43,6 @@
                 :redirect-to="redirectTo"
                 show-links
               />
-            </div>
-            <div
-              class="border-neutral-400 bg-neutral-50 dark:bg-neutral-800 relative rounded-xl px-8 py-12 drop-shadow-sm"
-              v-else
-            >
-              <div class="flex flex-col gap-6">
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-10 rounded-full p-2"
-                    :style="{
-                      background: backgroundColor,
-                      color: authBrandColor
-                    }"
-                  >
-                    <IconPalette />
-                  </div>
-                  <h1 class="text-foreground text-2xl">Welcome back</h1>
-                </div>
-                <p class="text-neutral-400 text-auth-widget-test">
-                  {{ isAnonymous ? supabaseUser?.id : supabaseUser?.email }}
-                </p>
-                <Button variant="brand" @click.prevent="handleSignOut">
-                  Sign Out
-                </Button>
-              </div>
             </div>
           </div>
         </div>
@@ -220,7 +184,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { createClient } from '@supabase/supabase-js'
@@ -245,16 +209,10 @@ import UserContextProvider, {
   useSupabaseUser
 } from '@/auth/UserContextProvider'
 import { cn } from '~/lib'
+import { supabase } from '~/lib/supabase'
+import Home from '~/views/Home.vue'
 
-const supabaseClient = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-  // {
-  //   auth: {
-  //     debug: true
-  //   }
-  // }
-)
+const supabaseClient = supabase
 const SITE_URL = import.meta.env.VITE_SITE_URL
 
 useSEOHeader()
@@ -316,15 +274,29 @@ const redirectTo = computed(() => {
 const isLogged = computed(() => supabaseUser.value !== null)
 const isAnonymous = computed(() => supabaseUser.value?.is_anonymous)
 
-const handleSignOut = () => {
-  supabaseClient.auth.signOut()
-  supabaseUser.value = null
+const handleSignOut = async () => {
+  await supabaseClient.auth.signOut()
+  
+  // Force page reload to clear all application state
+  window.location.href = '/'
 }
 
+// Check authentication state on startup
+onMounted(async () => {
+  // Get the current session to ensure our auth state is accurate
+  const { data } = await supabase.auth.getSession()
+  
+  // If no session found, ensure user is set to null
+  if (!data.session) {
+    supabaseUser.value = null
+  }
+})
+
+// Simplified watcher - just log state changes
 watch(
   () => supabaseUser.value,
   (newUser) => {
-    console.log(newUser)
+    console.log('Authentication state changed:', newUser)
   },
   { deep: true }
 )
