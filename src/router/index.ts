@@ -3,6 +3,7 @@ import { supabase } from '~/lib/supabase'
 
 // Views
 import Home from '~/views/Home.vue'
+import Dashboard from '~/views/Dashboard.vue'
 import Matching from '~/views/Matching.vue'
 import Contacts from '~/views/Contacts.vue'
 import Chat from '~/views/Chat.vue'
@@ -18,6 +19,12 @@ const routes = [
     component: Home,
     meta: { requiresAuth: true },
     children: []
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
+    meta: { requiresAuth: true }
   },
   {
     path: '/matching',
