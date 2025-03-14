@@ -17,7 +17,7 @@ export default defineConfig(({ command, mode }) => {
   let userConfig: UserConfig = {}
 
   // Base URL for GitHub Pages deployment
-  const base = '/'
+  const base = '/dm-supabase-vue3/'
 
   // Development mode CSS configuration
   const cssConfig =
