@@ -16,6 +16,9 @@ import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 export default defineConfig(({ command, mode }) => {
   let userConfig: UserConfig = {}
 
+  // Base URL for GitHub Pages deployment
+  const base = '/'
+
   // Development mode CSS configuration
   const cssConfig =
     mode !== 'lib'
@@ -73,6 +76,7 @@ export default defineConfig(({ command, mode }) => {
   }
 
   return {
+    base, // Set the base URL for GitHub Pages
     ...cssConfig,
     resolve: {
       alias: {
