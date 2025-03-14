@@ -1,0 +1,1 @@
+const r={hello:e=>{const{normalize:n,interpolate:o,named:a}=e;return n(["Hello, ",o(a("name")),"!"])},language:e=>{const{normalize:n}=e;return n(["Language"])},menu:{home:e=>{const{normalize:n}=e;return n(["Home"])}}};export{r as default};
