@@ -1,8 +1,8 @@
 {
-  "name": "@supa-kit/auth-ui-vue",
-  "version": "0.4.3",
+  "name": "dreammall",
+  "version": "0.0.1",
   "type": "module",
-  "author": "xiaoluoboding <xiaoluoboding@gmail.com>",
+  "author": "devmatrose <devmatrose@proton.me>(im Auftrag von DreamMall GmbH)",
   "scripts": {
     "dev": "vite --port 3003",
     "build:docs": "vite build --mode docs",
@@ -13,9 +13,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/supa-kit/auth-ui-vue.git"
+    "url": "git+https://github.com/ogerly/dm-supabase-vue3.git"
   },
-  "homepage": "https://github.com/supa-kit/auth-ui-vue",
+  "homepage": "https://github.com/ogerly/dm-supabase-vue3#readme",
   "files": [
     "lib",
     "volar.d.ts"
