@@ -25,6 +25,9 @@
       </div>
       
       <div class="flex items-center gap-4">
+        <!-- Language Selector -->
+        <LanguageSelector />
+        
         <!-- Profile dropdown -->
         <div class="relative">
           <button @click="isProfileOpen = !isProfileOpen" class="flex items-center gap-2 text-foreground">
@@ -59,7 +62,7 @@
       >
         <div class="p-4">
           <div class="space-y-1">
-            <router-link to="/dashboard" class="w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-secondary" :class="$route.path === '/' ? 'bg-primary/10 text-primary' : 'text-muted-foreground'">
+            <router-link to="/dashboard" class="w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-secondary" :class="$route.path === '/dashboard' ? 'bg-primary/10 text-primary' : 'text-muted-foreground'">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
@@ -133,6 +136,7 @@ import { useSupabaseUser } from '@/auth/UserContextProvider'
 import IconPalette from '~/components/IconPalette.vue'
 import { isDark } from '~/composables/useDarkmode'
 import { useRouter } from 'vue-router'
+import LanguageSelector from '~/components/LanguageSelector.vue'
 
 const router = useRouter()
 const { supabaseUser } = useSupabaseUser(supabase)
@@ -165,6 +169,9 @@ const backgroundColor = computed(() => {
   return colord(color).alpha(opacity).toRgbString()
 })
 
+// Get base URL for redirects
+const BASE_URL = import.meta.env.BASE_URL || '/dm-supabase-vue3/'
+
 // Actions
 const handleSignOut = async () => {
   isProfileOpen.value = false // Close dropdown first
@@ -172,7 +179,7 @@ const handleSignOut = async () => {
   // Sign out from Supabase
   await supabase.auth.signOut()
   
-  // Redirect to root and force reload to clear all states
-  window.location.href = '/'
+  // Redirect to root with proper base URL
+  window.location.href = BASE_URL
 }
 </script>

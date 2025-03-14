@@ -75,8 +75,11 @@ const routes = [
   }
 ]
 
+// Get base URL from environment or fallback to GitHub Pages path
+const BASE_URL = import.meta.env.BASE_URL || '/dm-supabase-vue3/'
+
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL || '/dm-supabase-vue3/'),
+  history: createWebHistory(BASE_URL),
   routes
 })
 
@@ -87,9 +90,8 @@ router.beforeEach(async (to, from, next) => {
     const { data } = await supabase.auth.getSession()
     
     if (!data.session) {
-      // If not logged in, redirect to root which will show login form 
-      // due to App.vue's v-if="isLogged" condition
-      next('/')
+      // Redirect to root with proper base URL
+      next(BASE_URL)
       return
     }
   }

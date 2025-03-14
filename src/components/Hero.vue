@@ -63,18 +63,18 @@ const { session, user } = injectStrict<UserContextProviderInjection>(
   UserContextProviderKey
 )
 
-// watch(
-//   () => session.value,
-//   (newSession) => {
-//     console.log(newSession)
-//   }
-// )
-// watch(
-//   () => user.value,
-//   (newUser) => {
-//     console.log(newUser)
-//   }
-// )
+watch(
+  () => session.value,
+  (newSession) => {
+    console.log(newSession)
+  }
+)
+watch(
+  () => user.value,
+  (newUser) => {
+    console.log(newUser)
+  }
+)
 </script>
 
 <style scoped>

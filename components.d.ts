@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     IconPalette: typeof import('./src/components/IconPalette.vue')['default']
     Input: typeof import('./src/components/ui/input/Input.vue')['default']
     Label: typeof import('./src/components/ui/label/Label.vue')['default']
+    LanguageSelector: typeof import('./src/components/LanguageSelector.vue')['default']
     'Logos:nuxtIcon': typeof import('~icons/logos/nuxt-icon')['default']
     'Logos:vue': typeof import('~icons/logos/vue')['default']
     'Ri:githubFill': typeof import('~icons/ri/github-fill')['default']

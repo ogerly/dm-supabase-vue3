@@ -76,12 +76,12 @@ export default defineConfig(({ command, mode }) => {
   }
 
   return {
-    base, // Set the base URL for GitHub Pages
+    base, // Make sure base URL is applied to all assets
     ...cssConfig,
     resolve: {
       alias: {
-        '@': resolve(__dirname, '/packages'),
-        '~': resolve(__dirname, '/src')
+        '@': resolve(__dirname, 'packages'),  // Fix: removed leading slash
+        '~': resolve(__dirname, 'src')        // Fix: removed leading slash
       }
     },
     plugins: [...commonPlugins],

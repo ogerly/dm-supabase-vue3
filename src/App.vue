@@ -9,6 +9,11 @@
           <div :class="brandClasses[authBrandColor]" class="rounded-2xl lg:min-w-md 2xl:min-w-md">
             <div class="border-neutral-400 bg-background relative rounded-xl px-8 py-12 drop-shadow-sm">
               <div class="flex flex-col gap-6">
+                <!-- Language Selector -->
+                <div class="flex justify-end mb-2">
+                  <LanguageSelector />
+                </div>
+                
                 <div class="flex items-center gap-3">
                   <div
                     class="w-10 rounded-full p-2"
@@ -211,13 +216,14 @@ import UserContextProvider, {
 import { cn } from '~/lib'
 import { supabase } from '~/lib/supabase'
 import Home from '~/views/Home.vue'  // TODO Fixed import statement - removed curly braces
+import LanguageSelector from './components/LanguageSelector.vue'
 
 const supabaseClient = supabase
 const SITE_URL = import.meta.env.VITE_SITE_URL
 
 useSEOHeader()
 const { supabaseUser } = useSupabaseUser(supabaseClient)
-const { locale } = useI18n()
+const { t, locale } = useI18n() // Add t from useI18n
 const { en, zh } = useLanguage()
 
 const brandClasses: { [key: string]: string } = {
@@ -264,7 +270,37 @@ const backgroundColor = computed(() => {
 })
 
 const theme = computed(() => (isDark.value ? 'dark' : 'default'))
-const I18nVariables = computed(() => (locale.value === 'en-US' ? en : zh))
+const I18nVariables = computed(() => {
+  let authVars;
+  switch(locale.value) {
+    case 'de-DE':
+      authVars = t('auth', { locale: 'de-DE' });
+      break;
+    case 'zh-CN':
+      authVars = t('auth', { locale: 'zh-CN' });
+      break;
+    case 'en-US':
+    default:
+      authVars = t('auth', { locale: 'en-US' });
+      break;
+  }
+  
+  // Convert single brace placeholders to double braces for Supabase Auth UI
+  const convertedVars = {};
+  for (const section in authVars) {
+    convertedVars[section] = {};
+    for (const key in authVars[section]) {
+      if (typeof authVars[section][key] === 'string') {
+        // Replace {provider} with {{provider}}
+        convertedVars[section][key] = authVars[section][key].replace(/{(\w+)}/g, '{{$1}}');
+      } else {
+        convertedVars[section][key] = authVars[section][key];
+      }
+    }
+  }
+  
+  return convertedVars;
+})
 const redirectTo = computed(() => {
   return view.value === 'forgotten_password'
     ? `${SITE_URL}/reset-password`
@@ -283,6 +319,12 @@ const handleSignOut = async () => {
 
 // Check authentication state on startup
 onMounted(async () => {
+  // Check for saved language
+  const savedLang = localStorage.getItem('preferredLanguage')
+  if (savedLang && ['en-US', 'de-DE', 'zh-CN'].includes(savedLang)) {
+    locale.value = savedLang
+  }
+  
   // Get the current session to ensure our auth state is accurate
   const { data } = await supabase.auth.getSession()
   
