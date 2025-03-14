@@ -14,6 +14,10 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL || 'https://xxx.supabase.co' }}
+      VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+      VITE_SITE_URL: ${{ vars.VITE_SITE_URL || 'https://ogerly.github.io/dm-supabase-vue3/' }}
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
@@ -29,6 +33,10 @@ jobs:
           
       - name: Build
         run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL || 'https://xxx.supabase.co' }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_SITE_URL: ${{ vars.VITE_SITE_URL || 'https://ogerly.github.io/dm-supabase-vue3/' }}
         
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
